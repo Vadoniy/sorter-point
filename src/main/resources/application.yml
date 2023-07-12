@@ -1,0 +1,33 @@
+spring:
+  kafka:
+    bootstrap-servers: localhost:9091,localhost:9092,localhost:9093
+    consumer:
+      key-deserializer: org.apache.kafka.common.serialization.UUIDDeserializer
+      value-deserializer: io.confluent.kafka.serializers.KafkaAvroDeserializer
+      group-id: "avro-consumer-group"
+#      properties:
+#        schema:
+#          registry:
+#            url: http://localhost:8081
+#        specific:
+#          avro:
+#            reader: "true"
+      properties:
+        schema:
+          registry:
+            url: http://localhost:8081
+        specific:
+          avro:
+            reader: "true"
+        streams:
+          binder:
+            auto-create-topics: true
+            configuration:
+#              state.dir: /tmp
+#              commit.interval.ms: 100
+#              topology.optimization: all
+#              session.timeout.ms: 10000
+#              schema.registry.url: http://localhost:8081
+#              auto.register.schemas: true
+              default.key.serde: org.apache.kafka.common.serialization.Serdes.UUIDSerde
+              default.value.serde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
