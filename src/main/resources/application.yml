@@ -23,11 +23,5 @@ spring:
           binder:
             auto-create-topics: true
             configuration:
-#              state.dir: /tmp
-#              commit.interval.ms: 100
-#              topology.optimization: all
-#              session.timeout.ms: 10000
-#              schema.registry.url: http://localhost:8081
-#              auto.register.schemas: true
               default.key.serde: org.apache.kafka.common.serialization.Serdes.UUIDSerde
               default.value.serde: io.confluent.kafka.streams.serdes.avro.SpecificAvroSerde
